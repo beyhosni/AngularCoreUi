@@ -1,0 +1,65 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <!--/.col-->
+  <div class="col-lg-12">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+           Les biens de Lansrod
+           <button style="margin-left: 20px" class="btn btn-success pull-right" (click)="onNewBien()" >
+              <span class="icon-plus icons"></span> Nouveau bien
+           </button>
+           <button type="button" class="btn btn-link icon-arrow-down-circle icons pull-right" (click)="onDownloadCSV()">
+            Télécharger (csv)</button>
+        </div>
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Nature de Bien</th>
+                <th>Référence</th>
+                <th>Adresse</th>
+                <th>Locataire</th>
+                <th>Loyer</th>
+                <th>Superficie</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bien of biens" (click)="goDetails()"  style="cursor: pointer">
+                  <td>{{ bien.nature }}</td>
+                  <td>{{ bien.ref }}</td>
+                  <td>{{ bien.adresse }}</td>
+                  <td>{{ bien.locataire }}</td>
+                  <td>{{ bien.loyer }}</td>
+                  <td>{{ bien.superficie }}</td>
+                  <td>
+                    <span *ngIf="bien.status == 'occupé'" class="badge badge-danger">{{ bien.status }}</span>
+                    <span *ngIf="bien.status == 'prochainement libre'" class="badge badge-warning">{{ bien.status }}</span>
+                    <span *ngIf="bien.status == 'Libre'" class="badge badge-success">{{ bien.status }}</span>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+            <nav>
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+         </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

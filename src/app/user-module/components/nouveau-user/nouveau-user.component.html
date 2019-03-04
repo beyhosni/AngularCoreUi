@@ -1,0 +1,140 @@
+<div class="d-flex justify-content-center">
+  <div *ngIf="showDeleteAlert"  class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Le User </strong> a été ajouté avec succé !
+      <button type="button" class="close" (click)="showDeleteAlert=!showDeleteAlert; onNaviguateListeUser()" >
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+</div>
+<div class="animated fadeIn" style="padding-left: 200px; padding-right: 200px">
+    <div class="row">
+      <!--/.col-->
+    <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+             Nouveau utilisateur
+          </div>
+          <div class="card-body">
+              <form #form="ngForm" (ngSubmit)="register(form.value)">
+                  <p class="text-muted">Creer un compte utilisateur</p>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text"
+                           placeholder="Nom d'utilisateur"
+                           [(ngModel)]="credentials.username"
+                           class="form-control"
+                           #name="ngModel"
+                           name="username"
+                           id="username"
+                           autocomplete="username"
+                           required minlength="2">
+                  </div>
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                        class="alert alert-danger custom_alert">
+                      <div *ngIf="name.errors.required">
+                        Le nom d'utilisateur est obligatoire !
+                      </div>
+                      <div *ngIf="name.errors.minlength">
+                        Le nom d'utilisateur doit contenir au moin 2 caractères !
+                      </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">@</span>
+                    </div>
+                    <input type="email"
+                           placeholder="Email"
+                           [(ngModel)]="credentials.email"
+                           class="form-control"
+                           #email="ngModel"
+                           name="email"
+                           id="email"
+                           autocomplete="email"
+                           required minlength="6">
+                  </div>
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                    class="alert alert-danger custom_alert">
+                  <div *ngIf="email.errors.required">
+                    L'email est obligatoire !
+                  </div>
+                  <div *ngIf="email.errors.minlength">
+                      L'email doit contenir au moin 6 caractères !
+                  </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password"
+                           placeholder="Mot de passe"
+                           [(ngModel)]="credentials.password"
+                           class="form-control"
+                           #password="ngModel"
+                           name="password"
+                           id="password"
+                           autocomplete="new-password"
+                           required minlength="6">
+                  </div>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                    class="alert alert-danger custom_alert">
+                  <div *ngIf="password.errors.required">
+                    Le mot de passe est obligatoire !
+                  </div>
+                  <div *ngIf="password.errors.minlength">
+                      Le mot de passe doit contenir au moin 6 caractères !
+                  </div>
+                  </div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password"
+                           placeholder="Confirmer mot de passe"
+                           [(ngModel)]="credentials.confirmedPassword"
+                           class="form-control"
+                           #confirmedPassword="ngModel"
+                           name="confirmedPassword"
+                           id="confirmedPassword"
+                           autocomplete="new-password"
+                           required minlength="6">
+                  </div>
+                  <div *ngIf="confirmedPassword.invalid && (confirmedPassword.dirty || confirmedPassword.touched)"
+                    class="alert alert-danger custom_alert">
+                  <div *ngIf="confirmedPassword.errors.required">
+                    La confirmation du mot de passe est obligatoire !
+                  </div>
+                  <div *ngIf="confirmedPassword.errors.minlength">
+                    La confirmation du mot de passe doit contenir au moin 6 caractères !
+                  </div>
+                  </div>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="switch switch-primary">
+                            <input [(ngModel)]="role" name="role"  id="role" class="switch-input" type="checkbox" (click)="onChangeAdm()" >
+                            <span class="switch-slider"></span>
+                        </label>
+                        <p *ngIf="!checkAdmin"  style="margin-left: 15px">Je suis un administrateur</p>
+                        <p *ngIf="checkAdmin" style="margin-left: 15px">Je ne suis pas un administrateur</p>
+                      </div>
+                    </div>
+                    <div>
+                      <button type="submit"
+                              class="btn btn-block btn-success"
+                              [disabled]="form.pristine || form.invalid"
+                              [ngClass]="{'no-drop' : true}"
+                              >Creer compte</button>
+                  </div>
+                  </form>
+          </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+  </div>
+  </div>
+</div>
+</div>

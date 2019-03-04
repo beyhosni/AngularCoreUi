@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+    <div *ngIf="showDeleteAlert"  class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Le bien </strong> a été suprimer avec succé !
+        <button type="button" class="close" (click)="showDeleteAlert=!showDeleteAlert" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<div class="animated fadeIn">
+    <div class="row">
+       <!--/.col-->
+    <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+             Détails du bien
+             <div class="pull-right">
+                <button class="btn btn-danger" (click)="openModal(template)">
+                    <span class="icon-trash icons"></span>
+                </button>
+                <span style="margin-left: 10px"></span>
+                <button class="btn btn-primary" (click)="onUpdateBien()">
+                    <span class="icon-note icons"></span>
+                </button>
+             </div>
+          </div>
+          <div class="card-body">
+           <p>Body</p>
+          </div>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+  </div>
+
+<!---->
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Voulez vous supprimer ce Bien ?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <button type="button" class="btn btn-danger btn-sm" (click)="modalRef.hide()">Annuler</button>
+      <button type="button" class="btn btn-primary btn-sm" (click)="modalRef.hide(); onDeleteBien()">Confirmer</button>
+  </div>
+</ng-template>
+
